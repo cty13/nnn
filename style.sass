@@ -1,0 +1,876 @@
+header.jumbotron
+*
+  font-family: 微軟正黑體
+  //border: solid black 
+body 
+  transition: background 1s ease
+  background: #3498db
+@mixin flex_center
+  display: flex
+  justify-content: center
+  align-items: center
+//設定大小
+@mixin size($w,$h:$w)
+  width: $w
+  height: $h
+
+//填滿畫面多於隱藏
+html,body
+  
+  //overflow: hidden
+  background-color: #CFD8DC
+  transition: 0.5s
+  -webkit-animation: bgcolor 20s infinite
+  animation: bgcolor 10s infinite
+  -webkit-animation-direction: alternate
+  animation-direction: alternate
+// .container
+//   padding-top: 55px
+//   padding-bottom: 60px
+//   height: 100%
+//   width: 100%
+//   color: #5b5c5c
+
+
+.container
+  
+  display: -webkit-flex
+  display: flex
+  -webkit-align-items: center
+  align-items: center
+  -webkit-justify-content: center
+  justify-content: center
+.mainbar
+  //padding-top: 150px
+    
+  .assign
+    //position: absolute
+    display: flex
+    // padding-left: 25%
+    //top: 55%
+    //left: 50%
+    //margin-right: -50%
+    //transform: translate(-50%, -50%)
+ 
+  .button13
+    display: inline-block
+    border-radius: 4px
+    background-color: #f4511e
+    border: none
+    color: #FFFFFF
+    text-align: center
+    font-size: 28px
+    padding: 10px
+    width: 200px
+    transition: all 0.5s
+    cursor: pointer
+    margin: 10px
+
+
+  .button13 span 
+    cursor: pointer
+    display: inline-block
+    position: relative
+    transition: 0.5s
+
+
+  .button13 span:after 
+    content: '\00bb'
+    position: absolute
+    opacity: 0
+    top: 0
+    right: -20px
+    transition: 0.5s
+
+
+  .button13:hover span 
+    padding-right: 25px
+
+
+  .button13:hover span:after 
+    opacity: 1
+    right: 0
+// .container
+//   //+size(100%)
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+ 
+.iambar3
+  text-align: center
+  +size(100%)
+  display: -webkit-flex
+  display: flex
+  -webkit-align-items: center
+  align-items: center
+  -webkit-justify-content: center
+  justify-content: center
+  //padding-bottom: 80px
+  h1
+    top: 50%
+    color: #5b5c5c
+    font-size: 75px
+    font-weight: bold
+    line-height: 100px
+    letter-spacing: 3px
+.appsfolder
+  +size(100%)
+  display: -webkit-flex
+  display: flex
+  -webkit-align-items: center
+  align-items: center
+  -webkit-justify-content: center
+  justify-content: center
+  #app
+    overflow: hidden
+    top: 50%
+    //padding-top: 0px
+    //padding-bottom: 250px
+    //+size(100%)
+    //flex center 放置元件在頁面中央
+    +flex_center
+  //把卡片垂直置中排放 橫向的
+
+//結構: .postareas     : 觀景窗 (relative) (930px,250px)
+         .posts        : 所有卡片排列成長條狀左右移動 (relative)
+           .postbox    : 卡片+左右margin (width 330px margin 300px )
+              .cover   : 封面圖
+                .infos : 大小文字
+   
+
+  
+.postarea
+  //不使內部內容換行
+  white-space: nowrap
+  position: relative
+  +size(930px,400px)
+
+//所有post
+.posts  
+  position: relative
+  transition: 0.5s ease
+  height: 100%
+
+//單一post
+.postbox
+  height: 100%
+  //在同一行裡面
+  display: inline-block
+  cursor: pointer
+  
+  //漸入
+  @keyframes fadeIn
+    10%
+      opacity: 0
+      filter: saturate(0%)
+      transform: translateX(30px)
+    100%
+      opacity: 1
+      filter: saturate(100%)
+      transform: translateX(0px)
+    
+  // 真正看得到的是cover
+  .cover
+    +size(200px,100%)
+    
+    background-color: white
+    
+    //設定左右margin擠開其他卡片
+    margin: 0px 580px 0px 150px
+    
+    //設定背景大小
+    background-size: 130% auto
+    background-position: center center
+    +flex_center
+    
+    //設定陰影
+    //box-shadow: 0px 0px 30px rgba(0,0,0,0.3)
+    transition: 0.5s
+    
+    //hover之後增加大小
+    &:hover
+      +size(220px,110%)
+    
+      //文字往左上飄
+      .infos
+        transform: translateX(290px) translateY(-10px)
+      
+      //封面背景放大
+      //.cover
+        background-size: 70% 70%
+        
+      
+  .infos
+    // 用偏移往左偏出範圍
+    color: #70595b
+    transform: translateX(300px) translateY(-0px)
+    text-shadow: 0px 0px 30px rgba(0,0,0,0.3)
+    transition: 0.5s
+    
+    //重設距離跟粗細
+    *
+      margin: 0
+      font-weight: 350
+    
+    //標題
+    h3
+      padding: 2px 6px
+      font-weight: 200
+    h1
+      
+      font-size: 60px
+      font-weight: 250
+      margin-bottom: 30px
+    //tag
+    h5
+      //background-color: white
+      color: #70595b
+      
+      padding: 2px 12px
+      width: 300px
+      box-shadow: 0px 0px 0px rgba(0,0,0,0.3)
+      font-size: 12px
+      
+    
+    letter-spacing: 1px
+  
+  //背景白色切入
+  @keyframes sliceIn
+    0%
+      transform: translateX(-50px)
+    100%
+      transform: translateX(0px)
+      
+//當下的項目套用動畫
+.item
+  .infos
+    h5 
+      animation: sliceIn 1s 0.1s ease both
+  .cover
+    animation: fadeIn 1s ease both  
+    
+//往左與往右控制
+.control_left , .control_right
+  
+  position: absolute
+  z-index: 100
+  +size(40px)
+  color: #70595b
+  font-size: 30px
+
+  //border: solid 1px #70595b
+  border-radius: 50%
+  +flex_center
+  cursor: pointer
+  transition: 0.5s
+
+  &:hover
+    color: #e3d5d7
+    //background-color: #70595b
+  
+//離左定位
+.control_left
+  left: 50px
+  top: 900px
+  transform: translateY(-50%)
+  
+//離右定位
+.control_right
+  right: 50px
+  top: 900px
+  transform: translateY(-50%)
+  
+#app1
+  overflow: hidden
+  margin-top: 0px
+  margin-bottom: 200px
+  +size(100%)
+  //flex center 放置元件在頁面中央
+  +flex_center
+.control_left_01, .control_right_01
+  
+  position: absolute
+  z-index: 100
+  +size(40px)
+  color: #70595b
+  font-size: 30px
+
+  //border: solid 1px #70595b
+  border-radius: 50%
+  +flex_center
+  cursor: pointer
+  transition: 0.5s
+
+  &:hover
+    color: #e3d5d7
+    //background-color: #70595b
+  
+//離左定位
+.control_left_01
+  left: 50px
+  top: 1730px
+  transform: translateY(-50%)
+  
+//離右定位
+.control_right_01
+  right: 50px
+  top: 1730px
+  transform: translateY(-50%)
+.iambar3
+  height: 100%
+.cty05
+  position: relative
+  //background-color: #d9e7ec
+  //padding-bottom: 200px
+  +size(100%)
+.bar
+  //padding-top: 1500px
+  height: 100%
+  display: -webkit-flex
+  display: flex
+  -webkit-align-items: center
+  align-items: center
+  -webkit-justify-content: center
+  justify-content: center
+  //background-color: #d9e7ec  
+  color: #5b5c5c
+  text-align: center
+  letter-spacing: 3px
+ 
+.clickmeohya
+  padding-top: 50px
+
+.slogan
+  font-size: 75px
+  //padding-top: 80px
+  padding-left: 180px
+  padding-right: 180px
+  font-weight: bold
+  padding-bottom: 30px
+
+.card
+  cursor: pointer
+  width: 500px
+  height: 500px
+  transition-duration: 1s
+  transform: rotateX(0deg)
+  box-shadow: 0px 0px 50px -2px rgba(20%,20%,40%,0.5)
+  //margin-top: 200px
+  margin-left: 180px
+.pic
+  background-image: url(https://i.imgur.com/FgLOJR8.png)
+
+  background-size: cover
+  
+  
+  
+
+.flipcard
+  transform: rotateX(180deg)
+.clickme
+  position: absolute
+  width: 600px
+  transform: translate(-20%,0%)
+  padding-top: 350px
+  z-index: 1
+  cursor: pointer
+  
+.contentshell
+  position: absolute
+  width: 100%
+  height: 100%
+  z-index: -1
+
+#testcontent
+  font-size: 15px
+  padding: 40px
+  color: #5b5c5c 
+  transform: translate(85%,12%)
+.cty06
+  //transform: translate(0%,25%)
+  //background-color: #EFEBE9
+  height: 100%
+  .iambar2
+      text-align: center
+      display: -webkit-flex
+      display: flex
+      -webkit-align-items: center
+      align-items: center
+      -webkit-justify-content: center
+      justify-content: center
+      //margin-top: -280px
+      //margin-bottom: 200px
+      h1
+        color: #5b5c5c
+        font-size: 75px
+        font-weight: bold
+        line-height: 100px
+        letter-spacing: 3px
+      
+    
+ 
+  //position: relative
+  //box-sizing: border-box
+  
+  //padding-top: 350px
+  //padding-bottom: 200px
+  
+  $circle: "circle"
+  $slide: "slide"
+  $images: ("https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/19702200_1569119593163358_9111201845418744195_n.jpg?_nc_cat=0&oh=074dfa259b0bc8139399dcd3e918b176&oe=5B2F10BF","https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/19702291_1569181499823834_8873071179885920444_n.jpg?_nc_cat=0&oh=77c0f89e8b20aa8efc3fa6475d79a023&oe=5B385F8E", "https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/19748678_1570308629711121_8379461180628242412_n.jpg?_nc_cat=0&oh=59150d8f1078c955c695c1ded881c4e0&oe=5B6B8211", "https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/19884176_1570282223047095_1832638205305550982_n.jpg?_nc_cat=0&oh=e1571df67f8bfe64cc874b7d3d32806e&oe=5B37DBDA")
+  $width: 885.3px
+  $height: 499.2px
+  @import url("https://fonts.googleapis.com/css?family=Heebo:800")
+
+
+  .parentsfolder
+    position: relative
+    height: 100%
+    display: -webkit-flex
+    display: flex
+    -webkit-align-items: center
+    align-items: center
+    -webkit-justify-content: center
+    justify-content: center
+  .parent
+    //padding-bottom: 100px
+    background-color: #f7bb54
+    width: $width
+    height: $height
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    
+    //margin: 0px 170px
+    overflow: hidden
+    //position: absolute
+    //-webkit-box-shadow: 0 0 88px 5px rgba(0, 0, 0, 0.75)
+    //-moz-box-shadow: 0 0 88px 5px rgba(0, 0, 0, 0.75)
+    //box-shadow: 0 0 88px 5px rgba(0, 0, 0, 0.75)
+
+
+  svg 
+    position: absolute
+    z-index: 1
+    width: $width
+    height: $height
+
+
+  button 
+    position: absolute
+    z-index: 50
+    width: 40px
+    overflow: hidden
+    height: 40px
+    border: none
+    border-radius: 50%
+    background: #fff
+    cursor: pointer
+    -webkit-box-shadow: 0 0 88px 5px rgba(0, 0, 0, 0.75)
+    -moz-box-shadow: 0 0 88px 5px rgba(0, 0, 0, 0.75)
+    box-shadow: 0 0 88px 5px rgba(0, 0, 0, 0.75)
+    &:focus 
+      outline-width: 0
+
+
+
+  circle 
+    stroke: #fff
+    fill: none
+    transition: 0.3s
+
+
+  #svg1 
+    circle 
+      transition-timing-function: linear
+
+
+  #svg2 
+    circle 
+      transition-timing-function: linear
+
+
+
+  #Capa_1 
+    position: absolute
+    width: 16px
+    height: 16px
+    transform: translate(-7px, -8px)
+
+
+  #Capa_2 
+    position: absolute
+    width: 16px
+    height: 16px
+    transform: translate(-9px, -8px)
+
+
+  .right 
+    margin-left: 810px
+    margin-top: 220px
+    border: 1px solid #849494
+    background-color: transparent
+    transition: .5s
+    &:hover 
+      background-color: #fff
+
+
+
+  .left 
+    margin-left: 0.5%
+    margin-top: 220px
+    border: 1px solid #849494
+    background-color: transparent
+    transition: .25s
+    &:hover   
+      background-color: #fff
+
+  @for $i from 1 through 9 
+    .circle#{$i} 
+      transition-delay: ($i/20)+s
+
+  @for $i from 1 through 9  
+    .circle#{$i + 9} 
+      transition-delay: ($i/20)+s
+
+
+  @each $image in $images 
+    $j: index($images, $image)
+    .#{$slide}#{$j} 
+      background-image: url($image)
+  .slider 
+    position: absolute
+    width: 400%
+    height: 100%
+    background: #000
+    display: inline-flex
+    overflow: hidden
+
+
+  .slide1, .slide2, .slide3, .slide4,
+    font-family: 微軟正黑體
+    position: absolute
+    background-position: center
+    background-size: cover
+    color: #EFEBE9
+    font-size: 62px
+    padding-top: 195px
+    font-weight: 800
+    text-align: center
+    width: 25%
+    height: 100%
+    z-index: 10
+    transition: 1s
+
+
+  .tran 
+    transform: scale(1.3)
+
+
+  .up1 
+    z-index: 20
+
+
+  .up2 
+    z-index: 40
+
+
+  .steap 
+    stroke-width: 0
+
+
+  .streak 
+    stroke-width: 82px
+
+
+  @media (max-width: 700px) 
+    .parent 
+      margin-left: 1%
+.cty07
+  
+  //position: static
+  margin-top: 90%
+  .iambar
+    
+    
+    h1
+      +size(100%)
+      text-align: center
+      display: -webkit-flex
+      display: flex
+      -webkit-align-items: center
+      align-items: center
+      -webkit-justify-content: center
+      justify-content: center
+      color: #c68239
+      font-size: 75px
+      font-weight: bold
+      line-height: 100px
+      letter-spacing: 3px
+    // .iambarsfolder
+    //   position: relative
+    //   height: 100%
+    //   width: 100%
+    // .iambar
+    //     //position: relative
+    //     text-align: center
+    //     height: 100%
+    //     width: 100%
+       
+   
+      
+      //padding: 40px
+      //padding-top: 80px
+      //padding-bottom: 10px
+      //display: inline-block
+      //margin-bottom: 80px
+  
+  .history
+    
+    // padding-top: 300px
+    //margin-bottom: -230px
+    display: inline-block
+    flex-direction: row
+    //height: 1450px
+    width: 100%
+    //background-color: #FFFDE7
+    
+      //padding-bottom: 80px
+      h1
+        font-size: 75px
+        font-weight: bold
+        line-height: 100px
+        letter-spacing: 3px
+        
+    .word
+      text-align: center
+      display: -webkit-flex
+      display: flex
+      -webkit-align-items: center
+      align-items: center
+      -webkit-justify-content: center
+      justify-content: center
+      //margin-left: 140px
+      margin-bottom: 10px
+      text-align: center
+      padding: 40px
+      padding-top: 80px
+      padding-bottom: 10px
+      display: flex
+    
+      flex-direction: row
+      .cty11
+        padding: 40px
+        padding-top: 80px
+        padding-bottom: 80px
+        margin-left: 25px
+        background-color: #FFAB91
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffe0ae' fill-opacity='1'%3E%3Cpath fill-rule='evenodd' d='M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E")
+        &:hover
+          transition-duration: 0.7s
+          box-shadow: 14px 14px 14px rgba(20%,20%,40%,0.5)
+          // filter: brightness(0.7)
+          cursor: pointer
+      .cty10
+        padding: 40px
+        padding-top: 80px
+        padding-bottom: 80px
+        margin-left: 20px
+        background-color: #FFAB91
+        background-image: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffe0ae' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M0 0h35v35H0V0zm5 5h25v25H5V5zm5 5h15v15H10V10zm5 5h5v5h-5v-5zM40 5h25v25H40V5zm5 5h15v15H45V10zm5 5h5v5h-5v-5zM70 35H35v35h35V35zm-5 5H40v25h25V40zm-5 5H45v15h15V45zm-5 5h-5v5h5v-5zM30 40H5v25h25V40zm-5 5H10v15h15V45zm-5 5h-5v5h5v-5z'/%3E%3C/g%3E%3C/svg%3E")
+
+        &:hover
+          transition-duration: 0.7s
+          box-shadow: 14px 14px 14px rgba(20%,20%,40%,0.5)
+          // filter: brightness(0.7)
+          cursor: pointer
+      .cty12
+        padding: 40px
+        padding-top: 80px
+        padding-bottom: 80px
+        margin-left: 25px
+        background-color: #FFAB91
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='58' viewBox='0 0 42 58'%3E%3Cg fill='%23ffe0ae' fill-opacity='1'%3E%3Cpath fill-rule='evenodd' d='M12 18h12v18h6v4H18V22h-6v-4zm-6-2v-4H0V0h36v6h6v36h-6v4h6v12H6v-6H0V16h6zM34 2H2v8h24v24h8V2zM6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM2 50h32v-8H10V18H2v32zm28-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0-8a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'/%3E%3C/g%3E%3C/svg%3E")
+        &:hover
+          transition-duration: 0.7s
+          box-shadow: 14px 14px 14px rgba(20%,20%,40%,0.5)
+          // filter: brightness(0.7)
+          cursor: pointer
+        
+ 
+
+.cty08
+  transform: translate(0%,40%)
+  //background-color: white
+  height: 1000px
+  height: 450px
+  margin-top: 400px
+  margin-bottom: -100px 
+.bar1
+  text-align: center
+.sponsors
+  padding-top: 40px
+  color: #424242
+  font-weight: bold
+  
+
+  
+  // -------------------求求
+  
+.ball   
+  position: absolute
+  border-radius: 100%
+  opacity: 0.7
+.cooperate
+  display: flex
+.cooperateword
+  margin-left: 40px
+.logo1
+  cursor: pointer
+  background-size: cover
+  height: 51px
+  width: 225px
+  background-image: url(https://i.imgur.com/siNaB4F.jpg)
+  margin-left: 48px 
+  margin-top: 30px
+.logo2
+  cursor: pointer
+  background-image: url(https://i.imgur.com/miGoYql.jpg)
+  margin-left: 50px
+  margin-top: 27px
+  height: 56px
+  width: 242px
+  background-size: cover
+.logo3
+  cursor: pointer
+  background-image: url(https://i.imgur.com/yOa5Y8T.jpg)
+  height: 56px
+  width: 245px
+  background-size: cover
+  margin-left: 48px
+  margin-top: 27px
+.assist
+  display: flex
+.assistword
+  margin-left: 40px
+  margin-top: 40px
+.logo4
+  cursor: pointer
+  background-image: url(https://i.imgur.com/uuo4zhw.jpg)
+  height: 56px
+  width: 198px
+  background-size: cover
+  margin-left: 48px
+  margin-top: 27px
+.logo5
+  cursor: pointer
+  background-image: url(https://i.imgur.com/5ZLAOM2.jpg)
+  background-size: cover
+  height: 80px
+  width: 273px
+  margin-left: 60px
+  margin-top: 15px
+.logo6
+  cursor: pointer
+  background-image: url(https://i.imgur.com/MFrYBuo.jpg)
+  height: 80px
+  width: 230px
+  background-size: cover
+  margin-left: 48px
+  margin-top: 20px
+.logo7
+  cursor: pointer
+  background-image: url(https://i.imgur.com/mbVIM32.jpg)
+  height: 85px
+  width: 185px
+  background-size: cover
+  margin-left: 68px
+  margin-top: 18px
+.supportword
+  margin-left: 40px
+  margin-top: 29px
+.support
+  display: flex
+.logo8
+  cursor: pointer
+  background-image: url(https://i.imgur.com/nfpLk1S.jpg)
+  height: 69px
+  width: 180px
+  background-size: cover
+  margin-left: 48px
+  margin-top: 18px
+.logo9
+  cursor: pointer
+  background-image: url(https://i.imgur.com/hsOkiJP.jpg)
+  height: 72px
+  width: 219px
+  background-size: cover
+  margin-left: 85px
+  margin-top: 16px
+.logo10
+  cursor: pointer
+  background-image: url(https://i.imgur.com/okNyvHv.jpg)
+  height: 190px
+  width: 233px
+  background-size: cover
+  margin-left: 80px
+  margin-top: -50px
+.logo11
+  cursor: pointer
+  background-image: url(https://i.imgur.com/UzO5dmz.jpg)
+  height: 51px
+  width: 226px
+  background-size: cover
+  margin-left: 110px
+  margin-top: 30px
+.support2
+  display: flex
+.logo12
+  cursor: pointer
+  background-image: url(https://i.imgur.com/SBKdlyA.png)
+  height: 150px
+  width: 150px
+  background-size: cover
+  margin-left: 67px
+  margin-top: 18px
+.logo13
+  cursor: pointer
+  background-image: url(https://i.imgur.com/MLwLYko.jpg)
+  height: 100px
+  width: 210px
+  background-size: cover
+  margin-left: 90px
+  margin-top: 45px
+.logo14
+  cursor: pointer
+  background-image: url(https://i.imgur.com/9uoR3bC.jpg)
+  height: 70px
+  width: 210px
+  background-size: cover
+  margin-left: 110px
+  margin-top: 58px
+.logo15
+  cursor: pointer
+  background-image: url(https://i.imgur.com/Q3WV3zR.jpg)
+  height: 92px
+  width: 180px
+  background-size: cover
+  margin-left: 100px
+  margin-top: 45px
+  
+
+  
